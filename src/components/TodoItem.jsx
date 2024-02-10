@@ -22,7 +22,7 @@ function TodoItem({ todo }) {
         <input
           type="checkbox"
           checked={isComplete}
-          onChange={(prev) => {
+          onChange={() => {
             setIsEditable(false);
             setIsComplete((prev) => !prev);
           }}
@@ -42,15 +42,17 @@ function TodoItem({ todo }) {
         <button
           onClick={handleEdit}
           disabled={isComplete}
-          className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded ml-2${
-            isComplete ? " bg-blue-800/50 blur-[1px] hover:bg-blue-800/50 " : ""
+          className={`bg-blue-500 hover:bg-blue-700 active:bg-blue-600 text-white font-bold py-2 px-2 rounded ml-2${
+            isComplete
+              ? " bg-blue-800/50 blur-[1px] hover:bg-blue-800/50 active:bg-blue-800/50"
+              : ""
           } md:px-4`}
         >
           {isEditable ? "📁" : "✏️"}
         </button>
         <button
           onClick={() => dispatch(deleteTodo(todo.id))}
-          className="bg-red-500 hover:bg-red-700 py-2 px-2 rounded ml-2 md:px-4"
+          className="bg-red-500 hover:bg-red-700 active:bg-red-600 py-2 px-2 rounded ml-2 md:px-4"
         >
           🗑️
         </button>
